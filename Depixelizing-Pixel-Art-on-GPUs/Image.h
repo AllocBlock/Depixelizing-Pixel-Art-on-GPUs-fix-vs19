@@ -17,7 +17,7 @@
  * Header file defining the Image class.
  */
 
-#include "GL/glew.h"
+#include <glad/glad.h>
 
 /**
 * Image Class representing a Pixel Art image loaded from file.

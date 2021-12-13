@@ -266,8 +266,6 @@ int PixelArtRenderer::initGraphics()
     }
 	
 	glfwMakeContextCurrent(m_window);
-	// Initialize GLEW
-	glewExperimental = GL_TRUE;
 
 	glfwSetWindowTitle(m_window, "Depixelizing PixelArt On GPU" );
 
@@ -279,17 +277,18 @@ int PixelArtRenderer::initGraphics()
 	glfwSetKeyCallback(m_window, &cbfun);
 	glfwSetScrollCallback(m_window, &mwfun);
 	glfwGetCursorPos(m_window, &m_mouse_lastPos_x, &m_mouse_lastPos_y);
-	// white background
-	glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 	
-	if (glewInit() != GLEW_OK) {
-		fprintf(stderr, "Failed to initialize GLEW\n");
+	if (!gladLoadGL()) {
+		fprintf(stderr, "Failed to initialize GLAD\n");
 		return -1;
 	}
+
+	// white background
+	glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 	fprintf(stdout, "GL_RENDERER   = %s\n", (char *)glGetString(GL_RENDERER));
 	fprintf(stdout, "GL_VERSION    = %s\n", (char *)glGetString(GL_VERSION));
 	fprintf(stdout, "GL_VENDOR     = %s\n", (char *)glGetString(GL_VENDOR));
-	if (GLEW_VERSION_3_3)
+	if (GLAD_GL_VERSION_3_3)
 	{
 		fprintf(stdout, "OpenGL 3.3 is supported!\n");
 	}
