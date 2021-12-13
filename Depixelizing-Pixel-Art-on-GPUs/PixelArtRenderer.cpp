@@ -9,6 +9,7 @@
 // IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
 // PARTICULAR PURPOSE.
 
+#include "Common.h"
 #include "PixelArtRenderer.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -243,7 +244,7 @@ int PixelArtRenderer::initGraphics()
 	if( !glfwInit() )
 	{
 		fprintf( stderr, "Failed to initialize GLFW\n" );
-		return -1;
+		throw "error";
 	}
 	glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
 	glfwWindowHint(GLFW_SAMPLES, 4);
@@ -280,7 +281,7 @@ int PixelArtRenderer::initGraphics()
 	
 	if (!gladLoadGL()) {
 		fprintf(stderr, "Failed to initialize GLAD\n");
-		return -1;
+		throw "error";
 	}
 
 	// white background
@@ -295,7 +296,7 @@ int PixelArtRenderer::initGraphics()
 	else
 	{
 		fprintf(stdout, "OpenGL 3.3 is NOT supported!\n");
-		return -1;
+		throw "error";
 	}
 	glGetError();
 	glEnable(GL_DEPTH_TEST);
@@ -308,9 +309,9 @@ bool PixelArtRenderer::initConstructionContent() {
 	m_similarityGraphBuilder = new SimilarityGraphBuilderFS(pixelArtImage, DrawBuffers, texUnit_similarityGraph, texUnit_updatedSimilarityGraph);
 	m_voronoiCellGraph3x3 = new VoronoiCellGraph3x3(pixelArtImage, DrawBuffers, m_similarityGraphBuilder);
 	m_cellGraphBuilder = new CellGraphBuilder(pixelArtImage, DrawBuffers, m_similarityGraphBuilder, texUnit_indexedCellPositions, texUnit_CellFlags, texUnit_knotNeighbors, texUnit_optimizedPositions, texUnit_correctedPositions);
-	
+
 	m_simGraphDebugToy = new SimilarityGraphDebugToy(pixelArtImage, m_similarityGraphBuilder, DrawBuffers);
-	
+
 	m_gaussRasterizer = new GaussRasterizer(pixelArtImage, DrawBuffers, m_cellGraphBuilder);
 	return true;
 }
@@ -373,15 +374,19 @@ void PixelArtRenderer::sequenceStepFrame() {
 void PixelArtRenderer::drawFrame(double time) {
 	// Clear the screen
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
+
+	check();
 	m_similarityGraphBuilder->draw();
+	check();
 	setZoom(time - m_lastFrameTime);
 	switch(m_currentRenderMode) {
 	case renderMode::SIMILARITYGRAPH:
 		m_simGraphDebugToy->drawPixelArt(window_width, window_heigth);
+		check();
 		if (m_overlay) {
 			m_simGraphDebugToy->drawSimilarityGraphOverlay(window_width, window_heigth);
 		}
+		check();
 		break;
 	case renderMode::VORONOIGRAPH3x3:
 		m_voronoiCellGraph3x3->draw(window_width, window_heigth);

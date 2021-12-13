@@ -27,4 +27,78 @@
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\drawPixels.frag">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\quad_shader.vert">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\FullCellGraphConstruction\FullCellGraphConstruction.geom">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\FullCellGraphConstruction\FullCellGraphConstruction.vert">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\FullCellGraphDrawing\FullCellGraphDrawing.geom">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\FullCellGraphDrawing\FullCellGraphDrawing.vert">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\FullCellGraphDrawing\FullCellGraphDrawing.frag">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\GaussRasterizer\GaussRasterizer.vert">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\GaussRasterizer\GaussRasterizer.frag">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\Optimization\OptimizeEnergy.vert">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\SimilarityGraph\eliminateCrossings.frag">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\SimilarityGraph\valenceUpdate.frag">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\SimilarityGraph\dissimilar.frag">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\SimilarityGraph\drawGraph.frag">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\SimilarityGraph\drawGraph.geom">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\SimilarityGraph\drawGraph.vert">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\SimilarityGraph\drawGraphNodes.vert">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\UpdateCorrectedPositions\UpdateCorrectedPositions.vert">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\VoronoiGraph\dbgDrawVoronoiCellOverlay.vert">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\VoronoiGraph\dbgDrawVoronoiCellGraph3x3.frag">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\VoronoiGraph\dbgDrawVoronoiCellGraph3x3.geom">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\VoronoiGraph\dbgDrawVoronoiCellGraph3x3.vert">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\VoronoiGraph\dbgDrawVoronoiCellOverlay.frag">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Depixelizing-Pixel-Art-on-GPUs\shaders\VoronoiGraph\dbgDrawVoronoiCellOverlay.geom">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
 </Project>

@@ -9,6 +9,7 @@
 // IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
 // PARTICULAR PURPOSE.
 
+#include "Common.h"
 #include "CellGraphBuilder.h"
 #include "SimilarityGraphBuilderFS.h"
 #include "Image.h"
@@ -116,24 +117,18 @@ int CellGraphBuilder::init() {
 	glBindBuffer(GL_TEXTURE_BUFFER, m_bufferID_fullCellGraphConstruction_feedback_pos);
 	glBindTexture(GL_TEXTURE_BUFFER,m_texID_fullCellGraph_indexedCellPositions);
 	glTexBuffer(GL_TEXTURE_BUFFER, GL_RG32F , m_bufferID_fullCellGraphConstruction_feedback_pos);
-	glTexParameteri(GL_TEXTURE_BUFFER, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_BUFFER, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
 	glGenTextures(1,&m_texID_fullCellGraph_flags);
 	glActiveTexture(GL_TEXTURE0 + m_texUnit_CellFlags);
 	glBindBuffer(GL_TEXTURE_BUFFER, m_bufferID_fullCellGraphConstruction_feedback_flags);
 	glBindTexture(GL_TEXTURE_BUFFER, m_texID_fullCellGraph_flags);
 	glTexBuffer(GL_TEXTURE_BUFFER, GL_R32I , m_bufferID_fullCellGraphConstruction_feedback_flags);
-	glTexParameteri(GL_TEXTURE_BUFFER, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_BUFFER, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
 	glGenTextures(1,&m_texID_fullCellGraph_knotNeighbors);
 	glActiveTexture(GL_TEXTURE0 + m_texUnit_knotNeighbors);
 	glBindBuffer(GL_TEXTURE_BUFFER, m_bufferID_fullCellGraphConstruction_feedback_neighbors);
 	glBindTexture(GL_TEXTURE_BUFFER, m_texID_fullCellGraph_knotNeighbors);
 	glTexBuffer(GL_TEXTURE_BUFFER, GL_RGBA32I , m_bufferID_fullCellGraphConstruction_feedback_neighbors);
-	glTexParameteri(GL_TEXTURE_BUFFER, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_BUFFER, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
 	return 0;
 }
@@ -373,7 +368,7 @@ int CellGraphBuilder::initDebug() {
 	//shader
 	m_programID_dbgDraw_fullCellGraph = LoadShaders(PA_SHADER_VS_CELLGRAPH_DRAW, PA_SHADER_GS_CELLGRAPH_DRAW, PA_SHADER_FS_CELLGRAPH_DRAW);
 	if (!m_programID_dbgDraw_fullCellGraph)
-		return -1;
+		throw "error";
 
 	//uniforms
 	m_uniformID_dbgDraw_fullCellGraph_indexedCellPositions = glGetUniformLocation(m_programID_dbgDraw_fullCellGraph, "indexedCellPositions");

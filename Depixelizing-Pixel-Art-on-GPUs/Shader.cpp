@@ -45,6 +45,10 @@ GLuint LoadShaders(const char * vertex_file_path,const char * geometry_file_path
 			VertexShaderCode += "\n" + Line;
 		VertexShaderStream.close();
 	}
+	else
+	{
+		throw "file not found";
+	}
 
 	// Compile Vertex Shader
 	printf("Compiling shader : %s\n", vertex_file_path);
@@ -76,6 +80,10 @@ GLuint LoadShaders(const char * vertex_file_path,const char * geometry_file_path
 		while(getline(FragmentShaderStream, Line))
 			FragmentShaderCode += "\n" + Line;
 		FragmentShaderStream.close();
+	}
+	else
+	{
+		throw "file not found";
 	}
 
 	// Compile Fragment Shader
@@ -116,6 +124,10 @@ GLuint LoadShaders(const char * vertex_file_path,const char * geometry_file_path
 			while(getline(GeometryShaderStream, Line))
 				GeometryShaderCode += "\n" + Line;
 			GeometryShaderStream.close();
+		}
+		else
+		{
+			throw "file not found";
 		}
 
 		// Compile Geometry Shader

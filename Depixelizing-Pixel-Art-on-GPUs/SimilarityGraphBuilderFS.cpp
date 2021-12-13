@@ -9,6 +9,7 @@
 // IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
 // PARTICULAR PURPOSE.
 
+#include "Common.h"
 #include "SimilarityGraphBuilderFS.h"
 #include "Shader.h"
 #include "Image.h"
@@ -113,13 +114,13 @@ int SimilarityGraphBuilderFS::init() {
 	//similarityGraph construction and update
 	m_programID_indifferentColors = LoadShaders(PA_SHADER_VS_QUAD, PA_SHADER_FS_DISSIMILAR);
 	if (!m_programID_indifferentColors)
-		return -1;
+		throw "error";
 	m_programID_valenceUpdate = LoadShaders(PA_SHADER_VS_QUAD, PA_SHADER_FS_UPDATE_VALENCE);
 	m_programID_eliminateCrossingDiagonals = LoadShaders(PA_SHADER_VS_QUAD, PA_SHADER_FS_ELIMINATE_CROSSINGS);
 		
 	m_uniformID_indifferentColors_pixelArt = glGetUniformLocation(m_programID_indifferentColors, "pixelArt");
-	if (!m_uniformID_indifferentColors_pixelArt)
-		return -1;
+	if (m_uniformID_indifferentColors_pixelArt < 0)
+		throw "error";
 	m_uniformID_valenceUpdate_similarityGraph = glGetUniformLocation(m_programID_valenceUpdate, "similarityGraph");
 	m_uniformID_eliminateCrossingDiagonals_similarityGraph = glGetUniformLocation(m_programID_eliminateCrossingDiagonals, "similarityGraph");
 		
@@ -134,7 +135,7 @@ int SimilarityGraphBuilderFS::init() {
 
 	// check that our framebuffer is ok
 	if(glCheckFramebufferStatus(GL_DRAW_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE){
-		return -1;
+		throw "error";
 	}
 	else return 0;
 
@@ -148,16 +149,25 @@ void SimilarityGraphBuilderFS::draw() {
 	//1st PASS: Calculate SimilarityGraph
 	//===================================
 	glUseProgram(m_programID_indifferentColors);
+	check();
 	// pixelArt sampler
 	glActiveTexture(GL_TEXTURE0 + m_pixelArtImage->getTextureUnit());
+	check();
 	glBindTexture(GL_TEXTURE_2D, m_pixelArtImage->getTextureHandle());
+	check();
 	glUniform1i(m_uniformID_indifferentColors_pixelArt, m_pixelArtImage->getTextureUnit());
+	check();
 	glBindVertexArray(m_vaoID_similarityGraph_UVquad);
+	check();
 	// Render to our framebuffers color attachment 0, which holds the texture texID_similarityGraph
 	glBindFramebuffer(GL_DRAW_FRAMEBUFFER, m_fbo1);
-	glDrawBuffers(1, &m_DrawBuffers[0] );
+	check();
+	glDrawBuffer(m_DrawBuffers[0]);
+	check();
 	glViewport(0,0, 2 * m_pixelArtImage->getWidth() + 1, 2 * m_pixelArtImage->getHeight() + 1);
+	check();
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+	check();
 	
 	//2nd PASS: Update Valences
 	//===================================
@@ -171,7 +181,8 @@ void SimilarityGraphBuilderFS::draw() {
 	glViewport(0,0, 2 * m_pixelArtImage->getWidth() + 1, 2 * m_pixelArtImage->getHeight() + 1);
 	// Draw !
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-	
+
+	check();
 	//3rd PASS: Eliminate Crossing Diagonals
 	//======================================
 	glUseProgram(m_programID_eliminateCrossingDiagonals);
@@ -184,7 +195,8 @@ void SimilarityGraphBuilderFS::draw() {
 	glViewport(0,0, 2 * m_pixelArtImage->getWidth() + 1, 2 * m_pixelArtImage->getHeight() + 1);
 	// Draw !
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-	
+
+	check();
 	//4th PASS: Update Valences
 	//======================================
 	
@@ -199,6 +211,7 @@ void SimilarityGraphBuilderFS::draw() {
 	glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
 	//unbind vao
 	glBindVertexArray(0);
+	check();
 }
 
 GLuint SimilarityGraphBuilderFS::getTexID() {

@@ -101,6 +101,7 @@
     <ClInclude Include="SimilarityGraphBuilderFS.h" />
     <ClInclude Include="SimilarityGraphDebugToy.h" />
     <ClInclude Include="VoronoiCellGraph3x3.h" />
+    <ClInclude Include="Common.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
