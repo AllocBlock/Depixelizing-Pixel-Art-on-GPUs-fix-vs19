@@ -10,7 +10,6 @@
 // PARTICULAR PURPOSE.
 
 // Include standard headers
-#include "Common.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
@@ -154,7 +153,6 @@ int main( int argc, char* argv[] )
 			renderer->sequenceLoadFrame(currentTime);
 		}
 		renderer->drawFrame(currentTime);
-		check();
 	} // Check if the ESC key was pressed or the window was closed
 	while( !glfwWindowShouldClose(renderer->getWindow()));
 

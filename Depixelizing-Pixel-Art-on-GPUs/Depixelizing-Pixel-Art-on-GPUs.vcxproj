@@ -101,7 +101,6 @@
     <ClInclude Include="SimilarityGraphBuilderFS.h" />
     <ClInclude Include="SimilarityGraphDebugToy.h" />
     <ClInclude Include="VoronoiCellGraph3x3.h" />
-    <ClInclude Include="Common.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -115,9 +114,9 @@
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\packages\boost.1.76.0.0\build\boost.targets" Condition="Exists('..\packages\boost.1.76.0.0\build\boost.targets')" />
     <Import Project="..\packages\glfw.3.3.0.1\build\native\glfw.targets" Condition="Exists('..\packages\glfw.3.3.0.1\build\native\glfw.targets')" />
-    <Import Project="..\packages\FreeImage.redist.3.18.0\build\native\FreeImage.redist.targets" Condition="Exists('..\packages\FreeImage.redist.3.18.0\build\native\FreeImage.redist.targets')" />
-    <Import Project="..\packages\FreeImage.3.18.0\build\native\FreeImage.targets" Condition="Exists('..\packages\FreeImage.3.18.0\build\native\FreeImage.targets')" />
     <Import Project="..\packages\boost_program_options-vc142.1.76.0.0\build\boost_program_options-vc142.targets" Condition="Exists('..\packages\boost_program_options-vc142.1.76.0.0\build\boost_program_options-vc142.targets')" />
+    <Import Project="..\packages\FreeImageNative.redist.3.17.0\build\native\FreeImageNative.redist.targets" Condition="Exists('..\packages\FreeImageNative.redist.3.17.0\build\native\FreeImageNative.redist.targets')" />
+    <Import Project="..\packages\FreeImageNative.3.17.0\build\native\FreeImageNative.targets" Condition="Exists('..\packages\FreeImageNative.3.17.0\build\native\FreeImageNative.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -125,8 +124,8 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\boost.1.76.0.0\build\boost.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost.1.76.0.0\build\boost.targets'))" />
     <Error Condition="!Exists('..\packages\glfw.3.3.0.1\build\native\glfw.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\glfw.3.3.0.1\build\native\glfw.targets'))" />
-    <Error Condition="!Exists('..\packages\FreeImage.redist.3.18.0\build\native\FreeImage.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\FreeImage.redist.3.18.0\build\native\FreeImage.redist.targets'))" />
-    <Error Condition="!Exists('..\packages\FreeImage.3.18.0\build\native\FreeImage.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\FreeImage.3.18.0\build\native\FreeImage.targets'))" />
     <Error Condition="!Exists('..\packages\boost_program_options-vc142.1.76.0.0\build\boost_program_options-vc142.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost_program_options-vc142.1.76.0.0\build\boost_program_options-vc142.targets'))" />
+    <Error Condition="!Exists('..\packages\FreeImageNative.redist.3.17.0\build\native\FreeImageNative.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\FreeImageNative.redist.3.17.0\build\native\FreeImageNative.redist.targets'))" />
+    <Error Condition="!Exists('..\packages\FreeImageNative.3.17.0\build\native\FreeImageNative.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\FreeImageNative.3.17.0\build\native\FreeImageNative.targets'))" />
   </Target>
 </Project>

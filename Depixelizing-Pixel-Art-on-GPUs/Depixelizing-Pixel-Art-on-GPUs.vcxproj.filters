@@ -74,9 +74,6 @@
     <ClInclude Include="Image.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Common.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -9,7 +9,6 @@
 // IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
 // PARTICULAR PURPOSE.
 
-#include "Common.h"
 #include "PixelArtRenderer.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -375,18 +374,14 @@ void PixelArtRenderer::drawFrame(double time) {
 	// Clear the screen
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	check();
 	m_similarityGraphBuilder->draw();
-	check();
 	setZoom(time - m_lastFrameTime);
 	switch(m_currentRenderMode) {
 	case renderMode::SIMILARITYGRAPH:
 		m_simGraphDebugToy->drawPixelArt(window_width, window_heigth);
-		check();
 		if (m_overlay) {
 			m_simGraphDebugToy->drawSimilarityGraphOverlay(window_width, window_heigth);
 		}
-		check();
 		break;
 	case renderMode::VORONOIGRAPH3x3:
 		m_voronoiCellGraph3x3->draw(window_width, window_heigth);

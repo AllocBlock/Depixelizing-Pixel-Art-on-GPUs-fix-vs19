@@ -9,7 +9,6 @@
 // IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
 // PARTICULAR PURPOSE.
 
-#include "Common.h"
 #include "SimilarityGraphBuilderFS.h"
 #include "Shader.h"
 #include "Image.h"
@@ -149,25 +148,16 @@ void SimilarityGraphBuilderFS::draw() {
 	//1st PASS: Calculate SimilarityGraph
 	//===================================
 	glUseProgram(m_programID_indifferentColors);
-	check();
 	// pixelArt sampler
 	glActiveTexture(GL_TEXTURE0 + m_pixelArtImage->getTextureUnit());
-	check();
 	glBindTexture(GL_TEXTURE_2D, m_pixelArtImage->getTextureHandle());
-	check();
 	glUniform1i(m_uniformID_indifferentColors_pixelArt, m_pixelArtImage->getTextureUnit());
-	check();
 	glBindVertexArray(m_vaoID_similarityGraph_UVquad);
-	check();
 	// Render to our framebuffers color attachment 0, which holds the texture texID_similarityGraph
 	glBindFramebuffer(GL_DRAW_FRAMEBUFFER, m_fbo1);
-	check();
-	glDrawBuffer(m_DrawBuffers[0]);
-	check();
+	glDrawBuffers(1, &m_DrawBuffers[0]);
 	glViewport(0,0, 2 * m_pixelArtImage->getWidth() + 1, 2 * m_pixelArtImage->getHeight() + 1);
-	check();
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-	check();
 	
 	//2nd PASS: Update Valences
 	//===================================
@@ -182,7 +172,6 @@ void SimilarityGraphBuilderFS::draw() {
 	// Draw !
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
-	check();
 	//3rd PASS: Eliminate Crossing Diagonals
 	//======================================
 	glUseProgram(m_programID_eliminateCrossingDiagonals);
@@ -196,7 +185,6 @@ void SimilarityGraphBuilderFS::draw() {
 	// Draw !
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
-	check();
 	//4th PASS: Update Valences
 	//======================================
 	
@@ -211,7 +199,6 @@ void SimilarityGraphBuilderFS::draw() {
 	glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
 	//unbind vao
 	glBindVertexArray(0);
-	check();
 }
 
 GLuint SimilarityGraphBuilderFS::getTexID() {

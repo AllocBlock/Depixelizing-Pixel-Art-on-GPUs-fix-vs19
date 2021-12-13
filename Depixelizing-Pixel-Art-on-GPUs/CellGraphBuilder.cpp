@@ -9,7 +9,6 @@
 // IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
 // PARTICULAR PURPOSE.
 
-#include "Common.h"
 #include "CellGraphBuilder.h"
 #include "SimilarityGraphBuilderFS.h"
 #include "Image.h"
