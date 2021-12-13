@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Depixelizing-Pixel-Art-on-GPUs", "Depixelizing-Pixel-Art-on-GPUs\Depixelizing-Pixel-Art-on-GPUs.vcxproj", "{3ADD1656-DA6E-411E-81A6-9770083CF86E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Glad", "Glad\Glad.vcxproj", "{CA57E42F-44F5-47D3-80E0-38C5678389B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3ADD1656-DA6E-411E-81A6-9770083CF86E}.Debug|x64.ActiveCfg = Debug|x64
+		{3ADD1656-DA6E-411E-81A6-9770083CF86E}.Debug|x64.Build.0 = Debug|x64
+		{3ADD1656-DA6E-411E-81A6-9770083CF86E}.Release|x64.ActiveCfg = Release|x64
+		{3ADD1656-DA6E-411E-81A6-9770083CF86E}.Release|x64.Build.0 = Release|x64
+		{CA57E42F-44F5-47D3-80E0-38C5678389B2}.Debug|x64.ActiveCfg = Debug|x64
+		{CA57E42F-44F5-47D3-80E0-38C5678389B2}.Debug|x64.Build.0 = Debug|x64
+		{CA57E42F-44F5-47D3-80E0-38C5678389B2}.Release|x64.ActiveCfg = Release|x64
+		{CA57E42F-44F5-47D3-80E0-38C5678389B2}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F5617D37-9C5A-4EF4-AA67-9DCE65ED4D4F}
+	EndGlobalSection
+EndGlobal
